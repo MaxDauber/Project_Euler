@@ -10,6 +10,7 @@ Hence the difference between the sum of the squares of the first ten natural num
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 '''
 
+
 sum = 0
 squared_sum = 0
 for i in range(1, 101):

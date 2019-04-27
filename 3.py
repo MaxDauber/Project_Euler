@@ -10,7 +10,7 @@ div = 600851475143
 largest = 0
 for i in range(3, int(math.sqrt(div))+1, 2):
         # while i divides n , print i ad divide n 
-        while div % i== 0:
+        while div % i == 0:
             largest = i
             div = div / i
 print(largest)
