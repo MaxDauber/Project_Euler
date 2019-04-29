@@ -12,7 +12,7 @@ sum = 1000;
 
 for a in range(1,int(sum/3+1)):
     for b in range(a + 1, int(sum/2+1)):
-        #dont need to calculate value for c because there will only be one that fits
+        #do not need to calculate value for c because there will only be one that fits
         c = sum - a - b
         if a*a + b*b == c*c:
             print('a=' + str(a))
