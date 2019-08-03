@@ -1,6 +1,6 @@
 ## Project Euler Solutions
 
-These are solutions that I created for various Project Euler (http://projecteuler.net) problems.
+These are solutions that I created for various [Project Euler](https://projecteuler.net) problems.
 
 ## Running the Code
 
