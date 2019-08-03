@@ -8,14 +8,16 @@ It is possible to make £2 in the following way:
 How many different ways can £2 be made using any number of coins?
 '''
 
-# solved using DP (wow, an actual application of my algorithms class!)
+'''
+solved using DP (wow, an actual application of my algorithms class!)
 
-#                              / 0            if k < 1 or n < 0
-# recursion relation f(n,k) = |  1            if  n = 0
-#                              \ f(n, k-1) + f(n-denoms(k), k)
+                            / 0            if k < 1 or n < 0
+recursion relation f(n,k) = |  1            if  n = 0
+                            \ f(n, k-1) + f(n-denoms(k), k)
 
-# In the non-boundary case, the number of ways of making change using the first k types of coin is the number of ways
-# that don't use that coin, f (n, k - 1), together with the number of ways that do, f (n - ak, k).
+In the non-boundary case, the number of ways of making change using the first k types of coin is the number of ways
+that don't use that coin, f (n, k - 1), together with the number of ways that do, f (n - ak, k).
+'''
 denoms = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
