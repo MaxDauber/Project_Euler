@@ -1,5 +1,7 @@
-#Intellij Environment Data
+#Intellij Environment Data, environment Stuff
 .idea/
+.DS_Store
+.gitattributes
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -9,10 +9,9 @@ If dn represents the nth digit of the fractional part, find the value of the fol
 
 d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 '''
-
 '''
 NOTES:
-Most of my splutio n is drawn from section 5 of this paper which has an excellent proof for how to choose based on length:
+This solution uses brute force (super lame, I know) but a more elegant and interesting solution can be found in this paper:
 https://artemlos.net/docs/2014/01/MathExploration.pdf
 
 The procedure is:
@@ -32,22 +31,17 @@ specifically (g(⌈a⌉)− g(a)) mod n where n is the length of the number cont
 
         For example: (488889 - 206788) % 5 -> 1 which means that the desired digit is 7. Notice that the digit count is 
         from right to left, i.e. if the remainder would be zero, the digit would be 9, and so on.
-        
-These steps can be seen in the get_digit function below.
 
 '''
-
-def get_digit(num):
-    max_range_n = num
-    desired_digit = num
-    containing_length = num#(9*((10**num)*(num+1)) − (10**(n+1) + 1)/9)
+import time
 
 
-d = [int(digit) for digit in ''.join((str(digit) for digit in range(1, 10000001)))]
-print(d[0] * d[9] * d[99] * d[999] * d[9999] * d[99999] * d[999999])
+def solution():
+    big_num = [int(digit) for digit in ''.join((str(digit) for digit in range(1, 10000001)))]
+    return big_num[0] * big_num[9] * big_num[99] * big_num[999] * big_num[9999] * big_num[99999] * big_num[999999]
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
 
 
-ret = 1
-for num in range(7):
-    ret *= get_digit(10**num)
-print(ret)
