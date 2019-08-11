@@ -6,3 +6,4 @@ These are solutions that I created for various [Project Euler](https://projecteu
 
 When you run each *.py individually, it will output a single line numerical answer unless the problem specifically asks for a different format. According to the rules, each script will run in under 1 minute. For more specific timing information, uncomment the relevant lines or add them if I haven't already.
 
+The *useful_functions* module is for basic functions that I utilize in multiple problems, like generating primes or finding factors of a number.
