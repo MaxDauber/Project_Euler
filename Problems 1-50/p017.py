@@ -3,6 +3,7 @@ If the numbers 1 to 5 are written out in words: one, two, three, four, five, the
 
 If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
 '''
+import time
 
 numbersDict = {
     0:"zero",
@@ -38,16 +39,16 @@ numbersDict = {
 
 def numberLetters(num):
     num_len = ''
-    
+
     if 0 < num <= 20:
         num_len += numbersDict[num]
 
     if 21 <= num <= 99:
-        a,b = divmod(num, 10)
+        a, b = divmod(num, 10)
         if b == 0:
-            num_len += numbersDict[a*10]
+            num_len += numbersDict[a * 10]
         else:
-            num_len += numbersDict[a*10] + numbersDict[b]
+            num_len += numbersDict[a * 10] + numbersDict[b]
 
     if 100 <= num <= 999:
         if num % 100 == 0:
@@ -58,17 +59,26 @@ def numberLetters(num):
             if 0 < num <= 20:
                 num_len += numbersDict[digit] + "hundredand" + numbersDict[num]
             if 21 <= num <= 99:
-                a,b = divmod(num, 10)
+                a, b = divmod(num, 10)
                 if b == 0:
-                    num_len += numbersDict[digit] + "hundredand" + numbersDict[a*10]
+                    num_len += numbersDict[digit] + "hundredand" + numbersDict[a * 10]
                 else:
-                    num_len += numbersDict[digit] + "hundredand" + numbersDict[a*10] + numbersDict[b]
+                    num_len += numbersDict[digit] + "hundredand" + numbersDict[a * 10] + numbersDict[b]
     if num == 1000:
         num_len += "onethousand"
 
     return len(num_len)
 
-sum = 0
-for i in range(1,1001):
-    sum += numberLetters(i)
-print(sum)
+
+def solution():
+    sum = 0
+    for i in range(1, 1001):
+        sum += numberLetters(i)
+    return sum
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+

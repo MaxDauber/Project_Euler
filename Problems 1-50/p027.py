@@ -14,15 +14,8 @@ n^2+an+b, where |a|<1000 and |b|≤1000 where |n| is the modulus/absolute value 
 Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of
 primes for consecutive values of n, starting with n=0
 '''
-
-
-def is_prime(num):
-    factor = 2
-    while factor * factor <= num:
-        if num % factor == 0:
-            return False
-        factor += 1
-    return True
+import time
+from useful_functions.mathematics import is_prime
 
 
 def quadratic_prime_producer(a_lim, b_lim):
@@ -42,5 +35,12 @@ def quadratic_prime_producer(a_lim, b_lim):
     return longest
 
 
-ans = quadratic_prime_producer(1000, 1000)
-print(ans[1] * ans[2])
+def solution():
+    ans = quadratic_prime_producer(1000, 1000)
+    return ans[1] * ans[2]
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+

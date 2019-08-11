@@ -11,24 +11,25 @@ The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 '''
 
-from timeit import default_timer as timer
-start = timer()
 
-# caching powers of 5 for 0(1) access
-fifthPowers = []
-for i in range(10):
-    fifthPowers.append(int(i**5))
+import time
 
-sum = 0
-for num in range(2, 355000):
-    sum_of_digits = 0
-    number = num
-    for x in str(num):
-        sum_of_digits += fifthPowers[int(x)]
-    if num == sum_of_digits:
-        sum += sum_of_digits
 
-elapsed_time = (timer() - start) * 100
+def solution():
+    fifthPowers = []
+    for i in range(10):
+        fifthPowers.append(int(i ** 5))
 
-# print("Time: " + str(elapsed_time))
-print(sum)
+    sum = 0
+    for num in range(2, 355000):
+        sum_of_digits = 0
+        for x in str(num):
+            sum_of_digits += fifthPowers[int(x)]
+        if num == sum_of_digits:
+            sum += sum_of_digits
+    return sum
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+

@@ -15,11 +15,18 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 with (1,2, ... , n) where n > 1?
 
 '''
+import time
+
 
 pandigital = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-for x in range(9487, 9235, -1):
-    res = 100002 * x
-    if set(list(str(res))) == set(pandigital):
-        print(res)
-        break
+
+def solution():
+    for x in range(9487, 9235, -1):
+        res = 100002 * x
+        if set(list(str(res))) == set(pandigital):
+            return res
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))

@@ -16,6 +16,8 @@ NOTE: As there are only 16384 routes, it is possible to solve this problem by tr
 is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires
 a clever method! ;o)
 '''
+import time
+
 
 nums = '''75
 95 64
@@ -44,8 +46,16 @@ def recursive_sum(data, depth):
         return recursive_sum(data, depth - 1)
 
 
-matrix = []
-for line in nums.splitlines():
-    matrix.append([int(i) for i in line.rstrip('\n').split(" ")])
+def solution():
+    matrix = []
+    for line in nums.splitlines():
+        matrix.append([int(i) for i in line.rstrip('\n').split(" ")])
 
-print(recursive_sum(matrix, len(matrix) - 2))
+    return recursive_sum(matrix, len(matrix) - 2)
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+

@@ -5,8 +5,18 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 
 (Please note that the palindromic number, in either base, may not include leading zeros.)
 '''
+import time
 
-print(sum(num for num in range(1, 1000000) if str(num) == str(num)[::-1] and str(bin(num)[2:]) == str(bin(num)[2:])[::-1]))
+
+def solution():
+    return sum(num for num in range(1, 1000000) if
+              str(num) == str(num)[::-1] and str(bin(num)[2:]) == str(bin(num)[2:])[::-1])
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
 
 
 

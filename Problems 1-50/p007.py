@@ -3,29 +3,17 @@ By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that 
 
 What is the 10 001st prime number?
 '''
+import time
+from useful_functions.mathematics import nth_prime
 
 
-def nth_prime(nth):
-    if nth == 1:
-        return 2
-    count = 1
-    num = 1
-    while count < nth:
-        num += 2
-        if is_prime(num):
-            #uncomment to see full list of primes up to desired number
-            #print(str(num) + ' is prime ' + str(count))
-            count += 1
-    return num
+def solution():
+    return nth_prime(10001)
 
 
-def is_prime(num):
-    factor = 2
-    while factor * factor <= num:
-        if num % factor == 0:
-            return False
-        factor += 1
-    return True
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
 
 
-print(nth_prime(10001))
+

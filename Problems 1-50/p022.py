@@ -8,13 +8,21 @@ For example, when the list is sorted into alphabetical order, COLIN, which is wo
 
 What is the total of all the name scores in the file?
 '''
+import time
 from string import ascii_uppercase
 
 
 def get_score(word):
     return sum(ascii_uppercase.index(c) + 1 for c in word.strip('"'))
 
-with open('p022_names.txt') as file:
-    name_list = file.read().split(',')
-    name_list.sort()
-    print(sum(num * get_score(word) for num, word in enumerate(name_list, 1)))
+
+def solution():
+    with open('p022_names.txt') as file:
+        name_list = file.read().split(',')
+        name_list.sort()
+        return sum(num * get_score(word) for num, word in enumerate(name_list, 1))
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))

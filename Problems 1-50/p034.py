@@ -6,13 +6,21 @@ Find the sum of all numbers which are equal to the sum of the factorial of their
 Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 '''
 
-memo = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
-sum = 0
+import time
 
-for num in range (3,100000):
-    tempsum = 0
-    for x in list(str(num)):
-        tempsum += memo[int(x)]
-    if tempsum == num:
-        sum += num
-print(sum)
+memo = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
+
+def solution():
+    sum = 0
+    for num in range(3, 100000):
+        tempsum = 0
+        for x in list(str(num)):
+            tempsum += memo[int(x)]
+        if tempsum == num:
+            sum += num
+    return sum
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))

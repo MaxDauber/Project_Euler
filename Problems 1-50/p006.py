@@ -9,11 +9,21 @@ Hence the difference between the sum of the squares of the first ten natural num
 
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 '''
+import time
 
 
-sum = 0
-squared_sum = 0
-for i in range(1, 101):
-    sum += i
-    squared_sum += i*i
-print(sum * sum - squared_sum)
+def solution():
+    sum = 0
+    squared_sum = 0
+    for i in range(1, 101):
+        sum += i
+        squared_sum += i * i
+    return sum * sum - squared_sum
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+
+

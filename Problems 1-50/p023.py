@@ -13,31 +13,30 @@ this limit.
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 '''
-import math
+import time
+from useful_functions.mathematics import sum_divisors
 
 
-# sums divisors of a specified number
-def sum_divisors(num):
-    sum = 0
-    for div in range(2, int(math.sqrt(num)) + 1):
-        if num % div == 0:
-            if div == int(num / div):
-                sum += div
-            else:
-                sum += div + int(num / div)
-    return sum+1
+def solution():
+    abundant_nums = []
+    for num in range(1, 28123):
+        if sum_divisors(num) > num:
+            abundant_nums.append(num)
 
-abundant_nums = []
-for num in range(1, 28123):
-    if sum_divisors(num) > num:
-        abundant_nums.append(num)
+    nums = [i + 1 for i in range(28123)]
 
-nums = [i+1 for i in range(28123)]
+    # not very efficient, but it works :/
+    for x in abundant_nums:
+        for y in abundant_nums:
+            if x + y - 1 < len(nums):
+                nums[x + y - 1] = 0
 
-# not very efficient, but it works :/
-for x in abundant_nums:
-    for y in abundant_nums:
-        if x+y-1 < len(nums):
-            nums[x+y-1] = 0
+    return sum(nums)
 
-print(sum(nums))
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+
+

@@ -29,18 +29,24 @@ If b becomes an integer, we know that any any triangle with the parameters a and
 Additionally, we know that a < h and b < h. Assuming a <= b, we can see that a < p/3, so we won't check any higher.
 
 '''
+import time
 
-max_var = 0
-max_p = 0
-for p in range(2, 1000, 2):
-    h = 0
-    for a in range(2, int(p / 3) + 1):
-        if p * (p - 2 * a) % (2 * (p - a)) == 0:
-            h += 1
-    if h > max_var:
-        max_var = h
-        max_p = p
-print(max_p)
 
+def solution():
+    max_var = 0
+    max_p = 0
+    for p in range(2, 1000, 2):
+        h = 0
+        for a in range(2, int(p / 3) + 1):
+            if p * (p - 2 * a) % (2 * (p - a)) == 0:
+                h += 1
+        if h > max_var:
+            max_var = h
+            max_p = p
+    return max_p
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
 
 

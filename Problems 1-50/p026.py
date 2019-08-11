@@ -14,33 +14,22 @@ Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be see
 
 Find the value of big_num < 1000 for which 1/big_num contains the longest recurring cycle in its decimal fraction part.
 '''
+import time
+from useful_functions.mathematics import is_prime, mult_order
 
 
-# Return the multiplicative order of n(mod 10) as the multiplicative order of 10 mod an integer n relatively
-# prime to 10 gives the period of the decimal expansion of the reciprocal of n
-def mult_order(n):
-    z = 10
-    result = 1
-    while z != 1:
-        z = (z * 10) % n
-        result += 1
-    return result
+def solution():
+    longest_cycle = 7
+    longest = 0
+    for d in range(11, 1000):
+        if is_prime(d):
+            if mult_order(d) > longest_cycle:
+                longest_cycle = mult_order(d)
+                longest = d
+    return longest
 
 
-def is_prime(num):
-    factor = 2
-    while factor * factor <= num:
-        if num % factor == 0:
-            return False
-        factor += 1
-    return True
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
 
-
-longest_cycle = 7
-longest = 0
-for d in range(11,1000):
-    if is_prime(d):
-        if mult_order(d) > longest_cycle:
-            longest_cycle = mult_order(d)
-            longest = d
-print(longest)

@@ -11,13 +11,18 @@ How many such routes are there through a 20×20 grid?
 # reach the bottom right corner. For example for the 2x2 grid you can have RDRD, RRDD, DDRR, DRDR, RDDR, DRRD. As long
 # as the number of Rs equals the number of Ds for any N > 1, you will reach the bottom right, and the formula to find
 # number of combinations is simply (2N choose N) which equates to choose half of the distances to be R and half to be D
-
-import math
-
-
-def n_choose_r(n, r):
-    f = math.factorial
-    return f(n) / f(r) / f(n-r)
+import time
+from useful_functions.mathematics import n_choose_r
 
 
-print(n_choose_r(40, 20))
+def solution():
+    # I implemented a bunch of functions I might need later in the useful_functions directory, and this is just a call
+    return n_choose_r(40, 20)
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+
+

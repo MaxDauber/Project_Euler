@@ -3,9 +3,11 @@ The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
 Find the sum of all the primes below two million.
 '''
+import time
+from useful_functions.mathematics import is_prime
 
 
-def sum_primes(limit):
+def solution(limit):
     if limit == 2:
         return 2
     #edge cases, because after 5 the primes will all be odd, so we can increment by 2
@@ -20,13 +22,6 @@ def sum_primes(limit):
     return sum
 
 
-def is_prime(num):
-    factor = 2
-    while factor * factor <= num:
-        if num % factor == 0:
-            return False
-        factor += 1
-    return True
-
-
-print(sum_primes(2000000))
+start_time = time.time()
+print(solution(2000000))
+print("Runtime: %s seconds" % (time.time() - start_time))

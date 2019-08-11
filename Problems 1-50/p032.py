@@ -9,21 +9,27 @@ Find the sum of all products whose multiplicand/multiplier/product identity can 
 
 HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.
 '''
-import math
+
+
+import time, math
 
 ints = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 products = []
 
-
 def factors_of(n):
     return list((int(i), int(n/i)) for i in range(1, int(math.sqrt(n)) + 1) if n % i == 0)
 
+def solution():
+    for num in range(1, 9999):
+        for tuple in factors_of(num):
+            number = list(str(tuple[0]) + str(tuple[1]) + str(num))
+            if set(number) == set(ints):
+                products.append(num)
 
-for num in range(1,9999):
-    for tuple in factors_of(num):
-        number = list(str(tuple[0])+str(tuple[1])+str(num))
-        if set(number) == set(ints):
-            products.append(num)
+    return sum(set(products))
 
-print(sum(set(products)))
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
 

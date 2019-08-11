@@ -3,5 +3,14 @@
 
 What is the sum of the digits of the number 2^1000?
 '''
+import time
 
-print(sum(int(loc) for loc in str(int(2**1000))))
+
+def solution():
+    return sum(int(loc) for loc in str(int(2**1000)))
+
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+

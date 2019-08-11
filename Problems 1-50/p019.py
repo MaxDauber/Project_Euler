@@ -12,18 +12,29 @@ And on leap years, twenty-nine.
 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 '''
-
+import time
 from datetime import date
+
 
 # counters for each day to track number of first days
 weekdays = [0 for i in range(7)]
 
-# iterate across each month
-for year in range(1901, 2001):
-    for month in range(1, 13):
-        # take first day of that month and increment array according to what weekday it falls on
-        day = date(year, month, 1)
-        weekdays[day.weekday()] += 1
 
-# print of sundays found
-print(weekdays[6])
+def solution():
+    # iterate across each month
+    for year in range(1901, 2001):
+        for month in range(1, 13):
+            # take first day of that month and increment array according to what weekday it falls on
+            day = date(year, month, 1)
+            weekdays[day.weekday()] += 1
+
+    # print of sundays found
+    return weekdays[6]
+
+start_time = time.time()
+print(solution())
+print("Runtime: %s seconds" % (time.time() - start_time))
+
+
+
+

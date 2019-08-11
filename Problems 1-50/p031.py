@@ -18,16 +18,21 @@ recursion relation f(n,k) = |  1            if  n = 0
 In the non-boundary case, the number of ways of making change using the first k types of coin is the number of ways
 that don't use that coin, f (n, k - 1), together with the number of ways that do, f (n - ak, k).
 '''
+import time
+
+
 denoms = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
-def find_coin_combos(target):
+def solution(target):
     table = [0 for x in range(0, target + 1)]
     table[0] = 1
     for coin in range(0, len(denoms)):
-        for prev in range(denoms[coin], target+1):
+        for prev in range(denoms[coin], target + 1):
             table[prev] += table[prev - denoms[coin]]
     return table[target]
 
 
-print(find_coin_combos(200))
+start_time = time.time()
+print(solution(200))
+print("Runtime: %s seconds" % (time.time() - start_time))
