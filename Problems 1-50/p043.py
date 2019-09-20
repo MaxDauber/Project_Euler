@@ -17,13 +17,28 @@ Find the sum of all 0 to 9 pandigital numbers with this property.
 
 import time
 from itertools import permutations
-from useful_functions.mathematics import is_prime
+
+primes = [17, 13, 11, 7, 5, 3, 2]
 
 
 def solution():
-    for x in list(map("".join, permutations(list("7654321")))):
-        if is_prime(int(x)):
-            return x
+    sum = 0
+    for x in permutations('0123456789'):
+
+        n = ''.join(list(x))
+        valid = True
+
+        for j in range(0, len(primes)):
+            x = n[len(primes) - j:len(primes) - j + 3]
+            if int(x) % primes[j]:
+                valid = False
+                break
+
+        if valid:
+            sum += int(n)
+    return sum
+
+
 
 start_time = time.time()
 
