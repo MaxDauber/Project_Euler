@@ -12,18 +12,13 @@ is minimised; what is the value of D?
 import time
 
 
-
-def is_pentagonal(n):
-    arr = []
-    for i in range(n):
-        if 8*(3*i - 1)/2 == n:
-            return True
-    return False
+pentagons = set(num * ((3 * num) - 1) / 2 for num in range(2, 5000))
 
 def solution():
-    for i in range(100):
-
-
+    for a in pentagons:
+        for b in pentagons:
+            if a + b in pentagons and a + 2 * b in pentagons:
+                return int(a)
 
 
 start_time = time.time()
